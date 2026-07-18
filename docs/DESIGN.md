@@ -1,16 +1,19 @@
 # Design Document: ed25519-signature-rust
 
 ## Overview
-Implémentation d'une signature numérique Ed25519 en Rust
+# Ed25519-Signature-Rust
+
+[![Rust](https://img.shields.io/badge/Langage-Rust-blue.svg)](https://www.rust-lang.org/)
+[![MIT License](https://img.shields.io/badge/Licence-MIT-orange.svg)](https://openso
 
 ## Architecture
-Le projet est structuré de manière modulaire pour faciliter la maintenance.
+The project follows a modular architecture for maintainability and extensibility.
 
-## Choix techniques
-- Langage: rust
-- Approche: Implementation directe avec focus sur la performance
+## Technical Choices
+- Language: rust
+- Approach: Direct implementation with focus on correctness and performance
 
-## Améliorations futures
-- Optimisation des performances
-- Ajout de tests supplémentaires
-- Documentation enrichie
+## Future Improvements
+- Performance optimization
+- Additional test coverage
+- Enhanced documentation
