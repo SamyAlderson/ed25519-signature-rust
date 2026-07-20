@@ -69,11 +69,3 @@ cargo test
 ## License
 
 MIT License
-
-Quality standards:
-
-* This library is designed to be secure, reliable, and efficient.
-* All cryptographic operations are performed using secure and well-tested algorithms.
-* The library is extensively tested to ensure its correctness and reliability.
-* The API is designed to be simple, intuitive, and easy to use.
-* The library is compatible with a range of platforms and environments.
