@@ -1,71 +1,81 @@
-# Ed25519-Signature-Rust
+# ed25519-signature-rust
 
-> Secure cryptographic signatures for Ed25519 curve
+**Fast and secure Ed25519 digital signature implementation in Rust**
 
-## Overview
+This library provides a fast and secure implementation of the Ed25519 digital signature algorithm in Rust.
 
-Ed25519-Signature-Rust is a production-quality library for generating and verifying cryptographic signatures using the Ed25519 elliptic curve. This implementation provides a robust and secure solution for authentication and data integrity, suitable for a wide range of applications, including secure boot, authentication, and digital signatures. Written in Rust, this library leverages the language's strong focus on memory safety and performance to deliver high-speed cryptographic operations.
+## What it does
 
-## Features
+This library allows you to generate and verify Ed25519 signatures in Rust. The Ed25519 algorithm is a highly secure and efficient digital signature scheme, making it suitable for a wide range of applications.
 
-* **High-speed cryptographic operations**: Optimized for performance, Ed25519-Signature-Rust delivers fast signature generation and verification.
-* **Secure cryptographic primitives**: Based on the Ed25519 curve, this library provides secure and reliable cryptographic signatures.
-* **Memory-safe implementation**: Written in Rust, this library ensures memory safety and prevents common security vulnerabilities.
-* **Easy-to-use API**: Simple and intuitive API for generating and verifying signatures.
-* **Robust testing framework**: Comprehensive test suite to ensure the library's correctness and reliability.
-* **Flexible configuration options**: Adjustable parameters for signature generation and verification.
-* **Multi-platform support**: Compatible with a range of platforms, including Linux, macOS, and Windows.
+## Install
 
-## Getting Started
-
-### Prerequisites
-
-* Rust 1.64 or later
-* Cargo 1.64 or later
-
-### Installation
-
-```bash
-cargo add ed25519-signature-rust
+To use this library, add the following line to your `Cargo.toml` file:
+```toml
+[dependencies]
+ed25519-signature-rust = "0.1.0"
 ```
+Then, run `cargo build` to build the library.
 
-### Usage
+## Usage
 
-```bash
-// Generate a new key pair
-let (public_key, private_key) = ed25519::generate_keypair();
+Here's an example of how to use the library:
+```rust
+use ed25519_signature_rust::{Signature, PublicKey, PrivateKey};
 
-// Sign a message
-let signature = ed25519::sign(private_key, b"Hello, world!");
+fn main() {
+    // Generate a private key
+    let private_key = PrivateKey::generate().unwrap();
 
-// Verify the signature
-let is_valid = ed25519::verify(public_key, b"Hello, world!", &signature);
-assert!(is_valid);
+    // Generate a public key from the private key
+    let public_key = public_key(&private_key).unwrap();
+
+    // Sign a message
+    let signature = private_key.sign(b"Hello, world!").unwrap();
+
+    // Verify the signature
+    assert!(public_key.verify(b"Hello, world!", &signature).unwrap());
+}
 ```
+## Build from source
 
-## Architecture
+To build the library from source, run the following command:
+```bash
+cargo build
+```
+## Run tests
 
-The project is structured into the following key files:
-
-* `src/utils.rs`: Utility functions for cryptographic operations
-* `src/main.rs`: Entry point for the library
-* `src/test.rs`: Comprehensive test suite
-* `examples/signature.rs`: Example usage of the library
-* `examples/keygen.rs`: Example key generation using the library
-
-## Testing
-
+To run the tests, run the following command:
 ```bash
 cargo test
 ```
+## Project structure
 
-## Contributing
+The project consists of the following files:
 
-1. Fork the repository
-2. Create a feature branch
-3. Commit changes
-4. Push and open a PR
+* `lib.rs`: The main library code.
+* `tests.rs`: The test suite.
+* `ed25519.rs`: The implementation of the Ed25519 algorithm.
+* `utils.rs`: Utility functions.
 
 ## License
 
-MIT License
+Copyright (c) 2026 SamyAlderson
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
